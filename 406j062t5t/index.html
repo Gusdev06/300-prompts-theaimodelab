@@ -81,8 +81,21 @@
         if (viewed && !checkout && Date.now() - lastClick < 1500) initiateCheckout();
       });
 
-      /* ViewContent: dispara quando o link do checkout aparece no DOM (etapa da oferta) */
-      function scan() { if (!viewed && document.querySelector('a[href*="' + CKT + '"]')) viewContent(); }
+      /* ViewContent: so quando o CTA do checkout fica VISIVEL na viewport.
+         (a ancora entra no DOM durante a hidratacao, entao "existe no DOM" nao serve) */
+      var io = null, seen = [];
+      try {
+        io = new IntersectionObserver(function (es) {
+          for (var i = 0; i < es.length; i++) if (es[i].isIntersecting) { viewContent(); break; }
+        }, { threshold: 0.3 });
+      } catch (e) { }
+      function scan() {
+        if (viewed || !io) return;
+        var as = document.querySelectorAll('a[href*="' + CKT + '"]');
+        for (var i = 0; i < as.length; i++) {
+          if (seen.indexOf(as[i]) === -1) { seen.push(as[i]); io.observe(as[i]); }
+        }
+      }
 
       /* etapas do quiz: funil e client-side, entao segue a troca de rota */
       var last = null;
