@@ -59,6 +59,10 @@
         var n = e.target;
         while (n && n !== document) {
           if (n.tagName === 'A' && isCkt(n.getAttribute('href') || '')) { initiateCheckout(); return; }
+          /* na etapa da oferta o unico botao e o CTA que leva ao checkout */
+          if ((n.tagName === 'BUTTON' || n.getAttribute && n.getAttribute('role') === 'button') && ofertaVisivel()) {
+            initiateCheckout(); return;
+          }
           n = n.parentNode;
         }
       }, true);
@@ -75,31 +79,16 @@
 
       /* location.href= nao da pra interceptar: se ja viu a oferta e saiu logo apos clicar, conta */
       addEventListener('beforeunload', function () {
-        if (viewed && !checkout && Date.now() - lastClick < 1500) initiateCheckout();
+        if (!checkout && Date.now() - lastClick < 1500) initiateCheckout();
       });
 
-      /* --- ViewContent: so quando o CTA do checkout fica visivel por 1s --- */
-      var io = null, seen = [], timer = null;
-      try {
-        io = new IntersectionObserver(function (es) {
-          for (var i = 0; i < es.length; i++) {
-            var el = es[i].target;
-            if (es[i].isIntersecting) {
-              if (!timer) timer = setTimeout(function () {
-                timer = null;
-                if (el.isConnected && el.getBoundingClientRect().height > 0) viewContent();
-              }, 1000);
-            } else if (timer) { clearTimeout(timer); timer = null; }
-          }
-        }, { threshold: 0.3 });
-      } catch (e) { }
-      function scan() {
-        if (viewed || !io) return;
-        var as = document.querySelectorAll('a[href*="' + CKT + '"]');
-        for (var i = 0; i < as.length; i++) {
-          if (seen.indexOf(as[i]) === -1) { seen.push(as[i]); io.observe(as[i]); }
-        }
+      /* --- ViewContent: o CTA do checkout e um <button> sem href (nao existe <a>),
+             entao a etapa da oferta e detectada pela assinatura dela: contador + preco --- */
+      function ofertaVisivel() {
+        var t = document.body.innerText || '';
+        return /\d{1,2}:\d{2}(:\d{2})?/.test(t) && /[$\u20ac]\s?\d+[.,]\d{2}/.test(t);
       }
+      function scan() { if (!viewed && ofertaVisivel()) viewContent(); }
 
       /* --- Etapas: o funil e uma pagina so e NUNCA muda a URL,
              entao a etapa e detectada pela troca do titulo da pergunta --- */
@@ -114,7 +103,9 @@
       function pct() {
         var ds = document.querySelectorAll('div[style*="%"]');
         for (var i = 0; i < ds.length; i++) {
-          var m = (ds[i].style.width || '').match(/([\d.]+)%/);
+          var w = ds[i].style.width || '';
+          if (w.indexOf('calc') > -1) continue;
+          var m = w.match(/^([\d.]+)%$/);
           if (m) return m[1];
         }
         return null;
