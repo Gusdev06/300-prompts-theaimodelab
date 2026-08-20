@@ -104,10 +104,20 @@
       /* --- Etapas: o funil e uma pagina so e NUNCA muda a URL,
              entao a etapa e detectada pela troca do titulo da pergunta --- */
       var stepN = 0, lastSig = '', debounce = null;
+      /* o funil nao usa h1/h2/h3: o titulo da etapa e um <p><strong> */
       function sig() {
-        var h = document.querySelector('h1, h2, h3');
-        var t = (h && h.innerText) || '';
+        var el = document.querySelector('h1, h2, h3, p strong');
+        var t = (el && el.innerText) || document.body.innerText || '';
         return t.trim().replace(/\s+/g, ' ').slice(0, 80);
+      }
+      /* a barra de progresso carrega a % da etapa */
+      function pct() {
+        var ds = document.querySelectorAll('div[style*="%"]');
+        for (var i = 0; i < ds.length; i++) {
+          var m = (ds[i].style.width || '').match(/([\d.]+)%/);
+          if (m) return m[1];
+        }
+        return null;
       }
       function checkStep() {
         clearTimeout(debounce);
@@ -115,8 +125,10 @@
           var s = sig();
           if (!s || s === lastSig) return;
           lastSig = s; stepN++;
-          fb('QuizStep', { step: stepN, label: s.slice(0, 60) }, true);
-          ga('quiz_step', { step: stepN, label: s.slice(0, 60) });
+          var d = { step: stepN, label: s.slice(0, 60) }, p = pct();
+          if (p) d.progress = p;
+          fb('QuizStep', d, true);
+          ga('quiz_step', d);
           scan();
         }, 350);
       }
