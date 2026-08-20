@@ -53,7 +53,7 @@
       }
       function isCkt(u) { return typeof u === 'string' && u.indexOf(CKT) !== -1; }
 
-      /* 1. checkout via <a href> */
+      /* --- InitiateCheckout: o app pode navegar por <a>, window.open ou location --- */
       document.addEventListener('click', function (e) {
         lastClick = Date.now();
         var n = e.target;
@@ -63,11 +63,9 @@
         }
       }, true);
 
-      /* 2. checkout via window.open */
       var open_ = window.open;
       window.open = function (u) { if (isCkt(u)) initiateCheckout(); return open_.apply(window, arguments); };
 
-      /* 3. checkout via location.assign / location.replace */
       ['assign', 'replace'].forEach(function (m) {
         try {
           var orig = Location.prototype[m];
@@ -75,21 +73,18 @@
         } catch (e) { }
       });
 
-      /* 4. fallback: o app usa location.href=, que nao da pra interceptar.
-            se o lead ja viu a oferta e sai da pagina logo apos um clique, conta como checkout. */
+      /* location.href= nao da pra interceptar: se ja viu a oferta e saiu logo apos clicar, conta */
       addEventListener('beforeunload', function () {
         if (viewed && !checkout && Date.now() - lastClick < 1500) initiateCheckout();
       });
 
-      /* ViewContent: so quando o CTA do checkout fica VISIVEL na viewport.
-         (a ancora entra no DOM durante a hidratacao, entao "existe no DOM" nao serve) */
+      /* --- ViewContent: so quando o CTA do checkout fica visivel por 1s --- */
       var io = null, seen = [], timer = null;
       try {
         io = new IntersectionObserver(function (es) {
           for (var i = 0; i < es.length; i++) {
             var el = es[i].target;
             if (es[i].isIntersecting) {
-              /* a ancora pisca no DOM durante a hidratacao: so conta se ficar 1s visivel */
               if (!timer) timer = setTimeout(function () {
                 timer = null;
                 if (el.isConnected && el.getBoundingClientRect().height > 0) viewContent();
@@ -106,22 +101,29 @@
         }
       }
 
-      /* etapas do quiz: funil e client-side, entao segue a troca de rota */
-      var last = null;
-      function step() {
-        var p = location.pathname; if (p === last) return; last = p;
-        var s = p.replace(/^\/|\/$/g, '') || 'inicio';
-        fb('QuizStep', { step: s, path: p }, true);
-        ga('quiz_step', { step: s, path: p });
-        scan();
+      /* --- Etapas: o funil e uma pagina so e NUNCA muda a URL,
+             entao a etapa e detectada pela troca do titulo da pergunta --- */
+      var stepN = 0, lastSig = '', debounce = null;
+      function sig() {
+        var h = document.querySelector('h1, h2, h3');
+        var t = (h && h.innerText) || '';
+        return t.trim().replace(/\s+/g, ' ').slice(0, 80);
       }
-      ['pushState', 'replaceState'].forEach(function (m) {
-        var orig = history[m];
-        history[m] = function () { var r = orig.apply(this, arguments); step(); return r; };
-      });
-      addEventListener('popstate', step);
-      try { new MutationObserver(scan).observe(document.documentElement, { childList: true, subtree: true }); } catch (e) { }
-      if (document.readyState === 'loading') addEventListener('DOMContentLoaded', step); else step();
+      function checkStep() {
+        clearTimeout(debounce);
+        debounce = setTimeout(function () {
+          var s = sig();
+          if (!s || s === lastSig) return;
+          lastSig = s; stepN++;
+          fb('QuizStep', { step: stepN, label: s.slice(0, 60) }, true);
+          ga('quiz_step', { step: stepN, label: s.slice(0, 60) });
+          scan();
+        }, 350);
+      }
+
+      try { new MutationObserver(checkStep).observe(document.documentElement, { childList: true, subtree: true, characterData: true }); } catch (e) { }
+      addEventListener('popstate', checkStep);
+      if (document.readyState === 'loading') addEventListener('DOMContentLoaded', checkStep); else checkStep();
     })();
   </script>
 </head><body class="bg-background"><div hidden=""><!--$--><!--/$--></div><noscript><img height="1" width="1" style="display:none" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7&amp;ev=PageView&amp;noscript=1" alt=""/></noscript><div id="7fbd1231-09f8-470f-8a32-2b530edcbe48" style="--border-radius:0.75rem" class="flex flex-col min-h-screen items-center @container/page overflow-x-clip text-(--text-color,var(--foreground)) bg-background p-5 gap-y-6 @sm/page:gap-y-8 @xl/page:gap-y-10"><main class="flex flex-row flex-wrap justify-center items-start gap-x-(--gap-x) flex-auto w-full max-w-2xl min-w-[310px] gap-y-6 @sm/page:gap-y-8 @xl/page:gap-y-10 [--gap-x:1.5rem] @sm/page:[--gap-x:2rem] @xl/page:[--gap-x:2.5rem] content-center"><div id="48f32724-3047-4750-af87-a979193483ba" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><img width="750" height="225" class="w-full h-auto rounded-(--border-radius)" alt="logo tiktok shop influencer ia - cópia" srcSet="/assets/img/a5162f02-2e7b-4215-4f45-eeb7d8a47100-480.avif 480w, /assets/img/a5162f02-2e7b-4215-4f45-eeb7d8a47100-720.avif 720w, /assets/img/a5162f02-2e7b-4215-4f45-eeb7d8a47100-960.avif 960w, /assets/img/a5162f02-2e7b-4215-4f45-eeb7d8a47100-1280.avif 1280w" sizes="clamp(310px, 100vw - 40px, 672px)" src="/assets/img/a5162f02-2e7b-4215-4f45-eeb7d8a47100-1280.avif" fetchPriority="high" decoding="async" style="color:transparent;background-image:url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAANCAYAAADISGwcAAAG1ElEQVR4AQCBAH7/ANDR1QDQ0dUA0NHVANDR1QDQ0dUA0NHVANHR1QDR0dUA0dDVANHQ1QDR0NUA0dDVANHQ1QDS0NUA0s/VANLP1QDSz9UA08/VANPO1QDTztUA1M7VBNTN1QnUzdUL1M3VDNXN1QvVzNUI1czVA9XM1QDVzNUA1szVANbM1QDWzNUAAIEAfv8A0NHVANDR1QDQ0dUA0NHVAdDR1QXQ0dUI0NHVC9HR1Q3R0dUN0dDVDNHQ1QnR0NUG0dDVA9LQ1QDSz9UA0s/VANLP1QHTz9UE087VCNPO1QzUztUR1M3VFdTN1RfUzdUY1c3VFtXM1RPVzNUO1czVCNbM1QLWzNUA1szVANbL1QAAgQB+/wDQ0tUM0NLVDtDR1RHQ0dUU0NHVGdDR1R3Q0dUg0NHVItDR1SPR0dUi0dHVINHQ1R3R0NUa0dDVGNLQ1RbSz9UW0s/VF9PP1RrTztUd087VItTO1SbUzdUp1M3VKtXN1SrVzNUo1czVJNXM1R7WzNUY1szVEdbL1QzWy9UH1svVBQCBAH7/AM/S1R7P0tUgz9LVI8/S1SjP0tUt0NLVMdDS1TXQ0dU40NHVOdDR1TnQ0dU30dHVNdHQ1TLR0NUw0tDVLtLP1S7Sz9Uv08/VMdPO1TTTztU41M7VO9TN1T3UzdU+1c3VPdXM1TrVzNU11szVL9bL1SjWy9Uh1svVG9bL1RfWy9UUAIEAfv8Az9PVKs/T1SzP0tUvz9LVNM/S1TrP0tU/z9LVQ8/S1UfQ0tVJ0NHVSdDR1UjQ0dVG0dHVRNHQ1ULR0NVA0s/VQNLP1UHTz9VD087VRdPO1UjUzdVL1M3VTdXN1U3VzNVL1czVR9bM1ULWy9U71svVNNbL1SzWy9Um18vVIdfL1R8AgQB+/wDO09UsztPVLs7T1TLO09U3ztPVPc/T1UPP0tVIz9LVTM/S1U/P0tVQ0NHVUNDR1U7Q0dVM0dDVStHQ1UnS0NVJ0s/VSdPP1UvTztVN1M7VUNTN1VLUzdVT1czVU9XM1VHWzNVN1svVR9bL1UDXy9U518rVMdfK1SrXytUm18rVIwCBAH7/AM7U1SbO1NUpztTVLc7T1TLO09U4ztPVP87T1UXP09VJz9LVTM/S1U7Q0tVO0NHVTdDR1UvR0NVJ0dDVSNLQ1UjSz9VI08/VStPO1UzUzdVP1M3VUdXM1VLVzNVS1szVUNbL1UzWy9VG18rVP9fK1TfXytUw2MrVKdjK1STYytUiAIEAfv8AzdTVHM3U1R7N1NUizdTVKM7U1S7O09U1ztPVO87T1UDP09VDz9LVRc/S1UXQ0dVE0NHVQ9HQ1UHR0NVA0s/VQNLP1UDTztVC1M7VRNTN1UfVzdVJ1czVS9bM1UvWy9VJ18vVRdfK1UDXytU52MrVMtjJ1SvYydUk2MnVH9jJ1R0AgQB+/wDN1NUPzdTVEs3U1RbN1NUczdTVIs3U1SnO09UvztPVM87T1TfP0tU4z9LVONDR1TfQ0dU20dDVNNHQ1TPSz9Uy08/VM9PO1TXUzdU41M3VO9XM1T3WzNU/1svVQNfL1T7XytU72MrVNtjJ1TDYydUp2cnVItnI1RzZyNUY2cjVFgCBAH7/AM3V1QPN1dUGzdXVCs3U1Q/N1NUWzdTVHM7U1SLO09UmztPVKc/S1SrP0tUq0NHVKdDR1SfR0NUl0tDVI9LP1SPTztUk087VJdTN1SjVzNUs1czVL9bL1THXy9Uy18rVMdjJ1S/YydUr2cnVJdnI1R/ZyNUZ2sjVE9rI1Q/ax9UNAIEAfv8AzNXVAMzV1QDN1dUAzdXVBM3U1QrN1NUQztTVFc7T1RnO09Ucz9LVHc/S1RzQ0dUa0NHVGNHQ1RXS0NUU0s/VE9PO1RTUztUW1M3VGNXM1RzWy9Uf1svVItfK1STYytUk2MnVItnI1R7ZyNUa2sjVFNrH1Q7ax9UJ2sfVBdrH1QMAgQB+/wDM1dUAzNXVAMzV1QDN1dUAzdTVAc3U1QfN1NUMztPVD87T1RHP0tUSz9LVENDR1Q7R0dUL0dDVCdLP1QfTz9UG087VBtTN1QjVzdUL1czVD9bL1RPXytUW18rVGNjJ1RjZydUX2cjVFNrI1Q/ax9UK2sfVBdvH1QDbx9UA28bVAAGBAH7/AMzV1QDM1dUAzNXVAM3V1QDN1NUAzdTVAs3U1QbO09UKztPVC8/S1QvP0tUK0NHVB9HR1QTR0NUB0s/VANPP1QDTztUA1M3VAdXM1QTWzNUH1svVC9fK1Q/YytUR2MnVEdnI1RDZyNUO2sfVCtrH1QXbx9UA28bVANvG1QDbxtUAZig4hx9yTsEAAAAASUVORK5CYII=);background-size:cover"/></div><div id="19969a5f-28c9-4d93-96fd-475fd997cabb" class="flex w-full min-w-0 scroll-mt-7 rounded-(--border-radius) justify-center relative"><div class="w-full h-2 @sm/page:h-2.5 @xl/page:h-3 overflow-hidden box-content rounded-(--border-radius) bg-card"><div style="width:20%;background:linear-gradient(to right, var(--primary), var(--secondary))" class="h-full"></div></div></div><div id="f15f5680-3508-4a65-a6e0-4574657b9a9b" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><div class="w-full min-w-0 break-words font-bold prose text-balance text-2xl @sm/page:text-3xl @xl/page:text-4xl text-center"><p><strong>🚨Presta atención🚨</strong></p></div></div><div id="1979d844-e8e8-45db-9e2c-7e154bb35ea0" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><div class="min-w-0 break-words prose text-pretty text-base @sm/page:text-lg @xl/page:text-xl text-left"><p>Los videos de Influencer Realista con I.A están funcionando, viralizando y <span style="color:rgb(255, 255, 255)"><strong>vendiendo muchísimo AHORA, HOY</strong></span>, y no mañana, cuida de<span style="color:rgb(255, 38, 38)"> <strong>no dejar pasar la ola otra vez y quedarte mirando, ¿ok?!</strong></span></p></div></div><div id="15fcc8e7-b8c9-45a2-b0c4-2446da02a329" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><div class="min-w-0 break-words prose text-pretty text-base @sm/page:text-lg @xl/page:text-xl text-left"><p><strong>Mira estos resultados de abajo, vas a aprender a crear videos PROFESIONALES de Influencer de I.A, no esas I.A con cara de muñeco de cera, ¡esto es realismo de verdad, que se viraliza! 👇</strong></p></div></div><div id="d279e9a8-5815-4ed0-930d-abf03da4de3c" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><div class="w-full" style="--video-aspect:1080/1920"><!--$?--><template id="B:0"></template><div class="w-full aspect-(--video-aspect,16/9) rounded-(--border-radius)"></div><!--/$--></div></div><div id="bb43d5e1-b78b-44f1-8031-c676bc8d7cf8" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><div class="w-full" style="--video-aspect:1080/1920"><!--$?--><template id="B:1"></template><div class="w-full aspect-(--video-aspect,16/9) rounded-(--border-radius)"></div><!--/$--></div></div><div id="79472236-cd39-4728-a758-659c5d677684" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><div class="min-w-0 break-words prose text-pretty text-base @sm/page:text-lg @xl/page:text-xl text-center"><p>Para ver el precio del Método, </p><p>haz clic en el botón de abajo 👇</p></div></div><div id="0467d2da-4cf3-4915-867d-7a084dfe85a2" class="flex w-full min-w-0 justify-center scroll-mt-7 rounded-(--border-radius) relative"><div style="--primary:#1cdad3" class="absolute rounded-(--border-radius) inset-0 animate-[pulsing_1s_ease-out_infinite] bg-primary/80"></div><button data-slot="button" class="inline-flex items-center justify-center gap-2 whitespace-nowrap cursor-pointer text-sm font-medium transition-all disabled:pointer-events-none disabled:opacity-50 [&amp;_svg]:pointer-events-none [&amp;_svg:not([class*=&#x27;size-&#x27;])]:size-4 [&amp;_svg]:shrink-0 outline-none focus-visible:border-ring focus-visible:ring-ring/50 focus-visible:ring-[3px] aria-invalid:ring-destructive/20 dark:aria-invalid:ring-destructive/40 aria-invalid:border-destructive has-[&gt;svg]:px-3 w-full h-auto rounded-(--border-radius) p-6 @sm/page:p-6.5 @xl/page:p-7 active:scale-98 hover:scale-102 bg-primary text-primary-foreground mb-2 @sm/page:mb-2.25 @xl/page:mb-2.5 shadow-[0_8px_0_0_var(--secondary)] @sm/page:shadow-[0_9px_0_0_var(--secondary)] @xl/page:shadow-[0_10px_0_0_var(--secondary)] hover:bg-primary" style="--primary:#1cdad3"><div class="flex flex-auto items-center text-center z-5"><div class="w-full text-pretty font-bold prose text-base @sm/page:text-lg @xl/page:text-xl"><p><span style="color:rgb(255, 255, 255)"><strong>QUIERO VER EL PRECIO, VAMOS...</strong></span></p></div></div></button></div></main></div><!--$--><!--/$--><script>requestAnimationFrame(function(){$RT=performance.now()});</script><script src="/_next/static/chunks/03inu._-l2u8y.js?dpl=dpl_7peYNBFvMNrBaDoxhoa6TnB7Ppam" id="_R_" async=""></script><div hidden id="S:0"><div class="flex w-full h-auto overflow-hidden rounded-(--border-radius) box-content **:[[action$=fullscreen]]:hidden!"><div data-media-player="" role="region" aria-label="Video Player" data-orientation="portrait" aria-busy="true" data-load="visible" data-can-seek="" data-media-type="unknown" data-paused="" data-playsinline="" data-remote-state="disconnected" data-remote-type="none" data-stream-type="on-demand" data-view-type="video" class="group/player cursor-pointer flex w-full h-auto overflow-hidden rounded-(--border-radius) box-content" tabindex="0" style="aspect-ratio:1080/1920"><div data-media-provider=""><video crossorigin="anonymous"><source src="/assets/video/76022753-45cb-4dda-a907-4f47f4e7cb5b/playlist.m3u8" type="application/x-mpegurl"/></video><img data-visible="" data-loading="" class="absolute inset-0 object-cover opacity-0 transition-opacity duration-300" alt="tik4" crossorigin="anonymous"/></div><div class="vds-video-layout dark" data-match="" data-sm="" data-size="sm"></div><button data-media-tooltip="play" aria-label="Reproduzir vídeo" role="button" type="button" aria-keyshortcuts="k Space" data-paused="" aria-pressed="false" class="group/btn absolute left-1/2 top-1/2 hidden size-14 @sm/page:size-16 @xl/page:size-20 -translate-x-1/2 -translate-y-1/2 cursor-pointer items-center justify-center rounded-full bg-primary text-white shadow-lg transition-transform hover:scale-105 focus-visible:ring-2 focus-visible:ring-white/80 group-data-paused/player:flex group-data-controls/player:flex" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-rotate-ccw hidden size-6 group-data-ended/btn:block" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-play hidden size-6 @sm/page:size-8 @xl/page:size-10 translate-x-0.5 group-data-paused/btn:block group-data-ended/btn:hidden!" aria-hidden="true"><path d="M5 5a2 2 0 0 1 3.008-1.728l11.997 6.998a2 2 0 0 1 .003 3.458l-12 7A2 2 0 0 1 5 19z"></path></svg><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-pause block size-6 @sm/page:size-8 @xl/page:size-10 group-data-paused/btn:hidden" aria-hidden="true"><rect x="14" y="3" width="5" height="18" rx="1"></rect><rect x="5" y="3" width="5" height="18" rx="1"></rect></svg></button></div></div></div><script>$RB=[];$RV=function(a){$RT=performance.now();for(var b=0;b<a.length;b+=2){var c=a[b],e=a[b+1];null!==e.parentNode&&e.parentNode.removeChild(e);var f=c.parentNode;if(f){var g=c.previousSibling,h=0;do{if(c&&8===c.nodeType){var d=c.data;if("/$"===d||"/&"===d)if(0===h)break;else h--;else"$"!==d&&"$?"!==d&&"$~"!==d&&"$!"!==d&&"&"!==d||h++}d=c.nextSibling;f.removeChild(c);c=d}while(c);for(;e.firstChild;)f.insertBefore(e.firstChild,c);g.data="$";g._reactRetry&&requestAnimationFrame(g._reactRetry)}}a.length=0};
