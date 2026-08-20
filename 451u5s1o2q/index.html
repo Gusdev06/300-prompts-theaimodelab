@@ -83,10 +83,19 @@
 
       /* ViewContent: so quando o CTA do checkout fica VISIVEL na viewport.
          (a ancora entra no DOM durante a hidratacao, entao "existe no DOM" nao serve) */
-      var io = null, seen = [];
+      var io = null, seen = [], timer = null;
       try {
         io = new IntersectionObserver(function (es) {
-          for (var i = 0; i < es.length; i++) if (es[i].isIntersecting) { viewContent(); break; }
+          for (var i = 0; i < es.length; i++) {
+            var el = es[i].target;
+            if (es[i].isIntersecting) {
+              /* a ancora pisca no DOM durante a hidratacao: so conta se ficar 1s visivel */
+              if (!timer) timer = setTimeout(function () {
+                timer = null;
+                if (el.isConnected && el.getBoundingClientRect().height > 0) viewContent();
+              }, 1000);
+            } else if (timer) { clearTimeout(timer); timer = null; }
+          }
         }, { threshold: 0.3 });
       } catch (e) { }
       function scan() {
