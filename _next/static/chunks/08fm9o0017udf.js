@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="79bc462d-3d80-248b-2397-5dfd15743875")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,673889,t=>{"use strict";var e=t.i(475254);let a=[["path",{d:"M6 11h8a4 4 0 0 0 0-8H9v18",key:"18ai8t"}],["path",{d:"M6 15h8",key:"1y8f6l"}]],i=(0,e.default)("russian-ruble",a);t.s(["__iconNode",0,a,"default",0,i])}]);
+
+//# debugId=79bc462d-3d80-248b-2397-5dfd15743875

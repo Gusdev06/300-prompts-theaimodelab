@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="3f824b7e-8f7d-e42e-e31f-5e95cdc5f822")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,44419,e=>{"use strict";var c=e.i(475254);let t=[["circle",{cx:"12",cy:"18",r:"4",key:"m3r9ws"}],["path",{d:"M16 18V2",key:"40x2m5"}]],i=(0,c.default)("music-3",t);e.s(["__iconNode",0,t,"default",0,i])}]);
+
+//# debugId=3f824b7e-8f7d-e42e-e31f-5e95cdc5f822

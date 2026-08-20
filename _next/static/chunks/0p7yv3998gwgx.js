@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="6f097b9d-2ad6-9fc5-3785-583996e371eb")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,62190,t=>{"use strict";var e=t.i(475254);let h=[["path",{d:"M14 15h1",key:"171nev"}],["path",{d:"M14 9h1",key:"l0svgy"}],["path",{d:"M19 15h2",key:"1vnucp"}],["path",{d:"M19 9h2",key:"te2zfg"}],["path",{d:"M3 15h2",key:"8bym0q"}],["path",{d:"M3 9h2",key:"1h4ldw"}],["path",{d:"M9 15h1",key:"1tg3ks"}],["path",{d:"M9 9h1",key:"15jzuz"}],["rect",{x:"3",y:"3",width:"18",height:"18",rx:"2",key:"h1oib"}]],d=(0,e.default)("panel-top-bottom-dashed",h);t.s(["__iconNode",0,h,"default",0,d])}]);
+
+//# debugId=6f097b9d-2ad6-9fc5-3785-583996e371eb

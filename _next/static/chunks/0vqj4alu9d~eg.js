@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="9f897a47-6f87-7754-6ae2-d49bc07a0dd8")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,821144,o=>{"use strict";var t=o.i(475254);let e=[["polygon",{points:"12 2 19 21 12 17 5 21 12 2",key:"x8c0qg"}]],i=(0,t.default)("navigation-2",e);o.s(["__iconNode",0,e,"default",0,i])}]);
+
+//# debugId=9f897a47-6f87-7754-6ae2-d49bc07a0dd8

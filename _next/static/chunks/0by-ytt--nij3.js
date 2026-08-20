@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="3d1836cf-de6d-515a-4df7-760f34105cf8")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,834950,t=>{"use strict";var e=t.i(475254);let a=[["path",{d:"M15 4 5 9",key:"14bkc9"}],["path",{d:"m15 8.5-10 5",key:"1grtsx"}],["path",{d:"M18 12a9 9 0 0 1-9 9V3",key:"1sst7f"}]],s=(0,e.default)("turkish-lira",a);t.s(["__iconNode",0,a,"default",0,s])}]);
+
+//# debugId=3d1836cf-de6d-515a-4df7-760f34105cf8

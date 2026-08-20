@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="77e44392-1413-37a2-78b7-7e674c4b39a6")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,243033,c=>{"use strict";var e=c.i(475254);let t=[["path",{d:"M11 21a3 3 0 0 0 3-3V6.5a1 1 0 0 0-7 0",key:"1kkncs"}],["path",{d:"M7 19V6a3 3 0 0 0-3-3h0",key:"1jg5y1"}],["circle",{cx:"17",cy:"17",r:"3",key:"18b49y"}]],a=(0,e.default)("zodiac-capricorn",t);c.s(["__iconNode",0,t,"default",0,a])}]);
+
+//# debugId=77e44392-1413-37a2-78b7-7e674c4b39a6

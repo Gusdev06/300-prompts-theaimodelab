@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="073f69e8-e00c-b0f9-73ec-7c24ea4510be")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,101262,e=>{"use strict";var t=e.i(475254);let c=[["path",{d:"m18 14-1-3",key:"bdajw9"}],["path",{d:"m3 9 6 2a2 2 0 0 1 2-2h2a2 2 0 0 1 1.99 1.81",key:"f5fotj"}],["path",{d:"M8 17h3a1 1 0 0 0 1-1 6 6 0 0 1 6-6 1 1 0 0 0 1-1v-.75A5 5 0 0 0 17 5",key:"3i90e2"}],["circle",{cx:"19",cy:"17",r:"3",key:"1otbdv"}],["circle",{cx:"5",cy:"17",r:"3",key:"1d8p0c"}]],o=(0,t.default)("motorbike",c);e.s(["__iconNode",0,c,"default",0,o])}]);
+
+//# debugId=073f69e8-e00c-b0f9-73ec-7c24ea4510be

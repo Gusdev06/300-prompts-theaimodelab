@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="ab4a2d2d-04c4-0975-db88-00e7433a5237")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,964228,t=>{"use strict";var a=t.i(475254);let e=[["path",{d:"M22 7h-2",key:"1okbx2"}],["path",{d:"M6.5 3h11A2.5 2.5 0 0 1 20 5.5V20a1 1 0 0 1-1 1h-9a1 1 0 0 1-1-1V5.5a1 1 0 0 0-5 0V17a1 1 0 0 0 1 1h4",key:"kc32tg"}],["path",{d:"M9 7H2",key:"ahf7b7"}]],h=(0,a.default)("towel-rack",e);t.s(["__iconNode",0,e,"default",0,h])}]);
+
+//# debugId=ab4a2d2d-04c4-0975-db88-00e7433a5237

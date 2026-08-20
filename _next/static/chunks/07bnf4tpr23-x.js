@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="cadc2bcb-72c5-5b16-10a0-783d70dd295c")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,305557,t=>{"use strict";var e=t.i(475254);let o=[["path",{d:"m7 7 10 10-5 5V2l5 5L7 17",key:"1q5490"}]],l=(0,e.default)("bluetooth",o);t.s(["__iconNode",0,o,"default",0,l])}]);
+
+//# debugId=cadc2bcb-72c5-5b16-10a0-783d70dd295c

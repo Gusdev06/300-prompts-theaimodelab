@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="a2b1f4b9-cb2f-3ec9-c59e-f6c1c9d75cb1")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,530206,t=>{"use strict";var e=t.i(475254);let a=[["path",{d:"M11 7v10a5 5 0 0 0 5-5",key:"1ja3ih"}],["path",{d:"m15 8-6 3",key:"4x0uwz"}],["path",{d:"M3.85 8.62a4 4 0 0 1 4.78-4.77 4 4 0 0 1 6.74 0 4 4 0 0 1 4.78 4.78 4 4 0 0 1 0 6.74 4 4 0 0 1-4.77 4.78 4 4 0 0 1-6.75 0 4 4 0 0 1-4.78-4.77 4 4 0 0 1 0-6.76",key:"18242g"}]],d=(0,e.default)("badge-turkish-lira",a);t.s(["__iconNode",0,a,"default",0,d])}]);
+
+//# debugId=a2b1f4b9-cb2f-3ec9-c59e-f6c1c9d75cb1

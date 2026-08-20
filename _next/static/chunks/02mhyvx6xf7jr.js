@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="5cd8b7d0-e2bb-edde-5fad-ef30c98487cd")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,189666,e=>{"use strict";var t=e.i(475254);let o=[["path",{d:"M14 4v10.54a4 4 0 1 1-4 0V4a2 2 0 0 1 4 0Z",key:"17jzev"}]],a=(0,t.default)("thermometer",o);e.s(["__iconNode",0,o,"default",0,a])}]);
+
+//# debugId=5cd8b7d0-e2bb-edde-5fad-ef30c98487cd

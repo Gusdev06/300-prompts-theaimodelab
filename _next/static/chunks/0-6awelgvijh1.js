@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="fe4cddb2-0c81-4ed0-7bf4-5032c4005ebb")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,637294,t=>{"use strict";var e=t.i(475254);let o=[["path",{d:"M3 10A6.06 6.06 0 0 1 12 10 A6.06 6.06 0 0 0 21 10",key:"13lfmc"}],["path",{d:"M6 3v12a6 6 0 0 0 12 0V3",key:"1jnivp"}]],c=(0,e.default)("zodiac-ophiuchus",o);t.s(["__iconNode",0,o,"default",0,c])}]);
+
+//# debugId=fe4cddb2-0c81-4ed0-7bf4-5032c4005ebb

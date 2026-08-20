@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="ce63aede-4fd7-e36e-077c-01109a5c1c9a")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,312982,t=>{"use strict";var e=t.i(475254);let o=[["path",{d:"M3 16h6.857c.162-.012.19-.323.038-.38a6 6 0 1 1 4.212 0c-.153.057-.125.368.038.38H21",key:"1novf0"}],["path",{d:"M3 20h18",key:"1l19wn"}]],a=(0,e.default)("zodiac-libra",o);t.s(["__iconNode",0,o,"default",0,a])}]);
+
+//# debugId=ce63aede-4fd7-e36e-077c-01109a5c1c9a

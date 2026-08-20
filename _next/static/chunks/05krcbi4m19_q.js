@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="42a1580f-4c58-f8ba-037d-2fcabb876544")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,778042,e=>{"use strict";var a=e.i(475254);let t=[["path",{d:"M5 20a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1z",key:"b89hwq"}],["path",{d:"m14.5 10 1.5 8",key:"cim3qy"}],["path",{d:"M7 10h10",key:"1101jm"}],["path",{d:"m8 18 1.5-8",key:"ja3yjd"}],["circle",{cx:"12",cy:"6",r:"4",key:"1frrej"}]],c=(0,a.default)("chess-pawn",t);e.s(["__iconNode",0,t,"default",0,c])}]);
+
+//# debugId=42a1580f-4c58-f8ba-037d-2fcabb876544

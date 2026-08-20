@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="41172c61-fc98-d3b5-e8a8-df82de7b2f26")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,634475,e=>{"use strict";var t=e.i(475254);let o=[["path",{d:"M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z",key:"1jg4f8"}]],h=(0,t.default)("facebook",o);e.s(["__iconNode",0,o,"default",0,h])}]);
+
+//# debugId=41172c61-fc98-d3b5-e8a8-df82de7b2f26

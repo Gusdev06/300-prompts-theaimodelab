@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="b85053e8-c2bc-eb7e-1df6-d0d7e493933f")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,168421,e=>{"use strict";var t=e.i(475254);let l=[["ellipse",{cx:"12",cy:"5",rx:"9",ry:"3",key:"msslwz"}],["path",{d:"M3 5v14a9 3 0 0 0 18 0V5",key:"aqi0yr"}]],c=(0,t.default)("cylinder",l);e.s(["__iconNode",0,l,"default",0,c])}]);
+
+//# debugId=b85053e8-c2bc-eb7e-1df6-d0d7e493933f

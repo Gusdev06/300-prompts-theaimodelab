@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="59269e12-3a90-1c32-4e78-3d4cbaf87af9")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,26895,e=>{"use strict";var c=e.i(475254);let t=[["circle",{cx:"12",cy:"15",r:"6",key:"lhqcmb"}],["path",{d:"M18 3A6 6 0 0 1 6 3",key:"1p399e"}]],o=(0,c.default)("zodiac-taurus",t);e.s(["__iconNode",0,t,"default",0,o])}]);
+
+//# debugId=59269e12-3a90-1c32-4e78-3d4cbaf87af9

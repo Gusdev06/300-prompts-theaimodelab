@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="ffceb958-9844-1d7e-f48e-622678713e9a")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,958751,t=>{"use strict";var e=t.i(802316),i=t.i(721440);t.i(271645);class s extends i.HTMLMediaProvider{$$PROVIDER_TYPE="AUDIO";get type(){return"audio"}airPlay;constructor(t,s){super(t,s),(0,e.scoped)(()=>{this.airPlay=new i.HTMLAirPlayAdapter(this.media,s)},this.scope)}setup(){super.setup(),"audio"===this.type&&this.ctx.notify("provider-setup",this)}get audio(){return this.media}}t.s(["AudioProvider",0,s])}]);
+
+//# debugId=ffceb958-9844-1d7e-f48e-622678713e9a

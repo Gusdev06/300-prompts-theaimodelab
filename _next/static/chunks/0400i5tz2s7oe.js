@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="9ce8049c-dc11-6001-421a-1b39feac6c2b")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,848789,t=>{"use strict";var e=t.i(475254);let h=[["rect",{width:"14",height:"20",x:"5",y:"2",rx:"2",ry:"2",key:"1yt0o3"}],["path",{d:"M12.667 8 10 12h4l-2.667 4",key:"h9lk2d"}]],o=(0,e.default)("smartphone-charging",h);t.s(["__iconNode",0,h,"default",0,o])}]);
+
+//# debugId=9ce8049c-dc11-6001-421a-1b39feac6c2b

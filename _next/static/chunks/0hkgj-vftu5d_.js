@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="f9e2bd75-d4da-5764-3442-7c2d938af80a")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,124555,e=>{"use strict";var t=e.i(475254);let c=[["path",{d:"M4 11h1",key:"13eipc"}],["path",{d:"M8 15a2 2 0 0 1-4 0V3a1 1 0 0 1 1-1h.5C14 2 20 9 20 18v4",key:"1hs3im"}],["circle",{cx:"18",cy:"18",r:"2",key:"1emm8v"}]],i=(0,t.default)("fishing-rod",c);e.s(["__iconNode",0,c,"default",0,i])}]);
+
+//# debugId=f9e2bd75-d4da-5764-3442-7c2d938af80a

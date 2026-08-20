@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="5bf143bb-0311-8416-8c95-4778f19014b7")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,862491,e=>{"use strict";var t=e.i(475254);let i=[["path",{d:"M12 20h.01",key:"zekei9"}]],o=(0,t.default)("wifi-zero",i);e.s(["__iconNode",0,i,"default",0,o])}]);
+
+//# debugId=5bf143bb-0311-8416-8c95-4778f19014b7

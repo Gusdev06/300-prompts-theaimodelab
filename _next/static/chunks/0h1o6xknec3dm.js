@@ -1,0 +1,4 @@
+;!function(){try { var e="undefined"!=typeof globalThis?globalThis:"undefined"!=typeof global?global:"undefined"!=typeof window?window:"undefined"!=typeof self?self:{},n=(new e.Error).stack;n&&((e._debugIds|| (e._debugIds={}))[n]="e378befa-8247-78b5-9f47-6a1283b08b9c")}catch(e){}}();
+(globalThis.TURBOPACK||(globalThis.TURBOPACK=[])).push(["object"==typeof document?document.currentScript:void 0,457402,c=>{"use strict";var e=c.i(475254);let t=[["path",{d:"M21 14.5A9 6.5 0 0 1 5.5 19",key:"1xj2o6"}],["path",{d:"M3 9.5A9 6.5 0 0 1 18.5 5",key:"1gln3t"}],["circle",{cx:"17.5",cy:"14.5",r:"3.5",key:"1ccu1t"}],["circle",{cx:"6.5",cy:"9.5",r:"3.5",key:"x5tc2d"}]],o=(0,e.default)("zodiac-cancer",t);c.s(["__iconNode",0,t,"default",0,o])}]);
+
+//# debugId=e378befa-8247-78b5-9f47-6a1283b08b9c
