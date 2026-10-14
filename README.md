@@ -19,5 +19,5 @@ Site 100% estático. Na Vercel: framework **Other**, sem build command, output =
 
 - [ ] Trocar o `<title>` (hoje ainda é o original)
 - [ ] Subir os vídeos próprios e reapontar os 3 players (`5c5p596m6i`, `693g61265l`, `1o3t6x5g2f`)
-- [ ] Instalar o pixel próprio + UTMify no lugar do `noop-pixel.js`
-- [ ] Conferir o checkout: hoje aponta pra `checkout.centerpag.com/pay/PPU38CQFFRR`
+- [x] UTMify UTMs + Pixel novos (pixelId `6ac17129…`, 14/10); Meta `1223791793200733` mantido
+- [x] Checkout trocado em 14/10 pra `checkout.centerpag.com/pay/PPU38CQGMST` ($12.99)
